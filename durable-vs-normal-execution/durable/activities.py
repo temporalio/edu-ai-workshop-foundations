@@ -132,4 +132,4 @@ class GenerateReportActivities:
             
         except Exception as img_error:
             print(f"Error generating image or creating PDF with image: {img_error}")
-            raise ApplicationError(f"Failed to generate image or create PDF: {str(img_error)}")
+            raise ApplicationError(f"Failed to generate image or create PDF: {str(img_error)} test")
