@@ -56,6 +56,22 @@ quote-style = "double"
 indent-style = "space"
 line-ending = "auto"
 
+[tool.ruff.lint.per-file-ignores]
+"notebooks/**/*.ipynb" = [
+    "PTH",    # flake8-use-pathlib (style warnings for notebooks)
+    "RET",    # flake8-return (style warnings for notebooks)
+    "PLW",    # pylint warnings (safety warnings for notebooks)
+    "E",      # pycodestyle errors (style warnings for notebooks)
+    "W",      # pycodestyle warnings (style warnings for notebooks)
+    "B",      # flake8-bugbear (safety warnings for notebooks)
+    "SIM",    # flake8-simplify (style warnings for notebooks)
+    "UP",     # pyupgrade (style warnings for notebooks)
+    "ARG",    # flake8-unused-arguments (style warnings for notebooks)
+    "TCH",    # flake8-type-checking (style warnings for notebooks)
+    "PIE",    # flake8-pie (style warnings for notebooks)
+    "TRY",    # tryceratops (style warnings for notebooks)
+]
+
 [tool.ruff.lint.isort]
 known-first-party = ["edu_ai_workshop", "src"]
 

@@ -34,9 +34,7 @@ class GenerateReportWorkflow:
         # Uncomment to add delay
         # await workflow.sleep(timedelta(seconds=20))
 
-        pdf_generation_input = PDFGenerationInput(
-            content=research_facts["choices"][0]["message"]["content"]
-        )
+        pdf_generation_input = PDFGenerationInput(content=research_facts["choices"][0]["message"]["content"])
 
         pdf_filename: str = await workflow.execute_activity(
             create_pdf,
@@ -49,6 +47,4 @@ class GenerateReportWorkflow:
             ),
         )
 
-        return GenerateReportOutput(
-            result=f"Successfully created research report PDF: {pdf_filename}"
-        )
+        return GenerateReportOutput(result=f"Successfully created research report PDF: {pdf_filename}")
