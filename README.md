@@ -152,11 +152,15 @@ just temporal
 
 **Terminal 2** - Start the worker:
 ```bash
+just demo-3-worker
+# OR manually:
 uv run src/module_one_03_human_in_the_loop/worker.py
 ```
 
 **Terminal 3** - Execute the workflow:
 ```bash
+just demo-3
+# OR manually:
 uv run src/module_one_03_human_in_the_loop/starter.py
 ```
 

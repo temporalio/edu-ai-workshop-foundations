@@ -81,3 +81,11 @@ demo-2:
 # Run the worker for 02-Add-Durability
 demo-2-worker:
     uv run src/module_one_02_adding_durability/worker.py
+
+# Run the demo for 03-Human-in-the-Loop
+demo-3:
+    uv run src/module_one_03_human_in_the_loop/starter.py
+
+# Run the worker for 03-Human-in-the-Loop
+demo-3-worker:
+    uv run src/module_one_03_human_in_the_loop/worker.py
