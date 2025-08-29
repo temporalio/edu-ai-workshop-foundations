@@ -98,15 +98,9 @@ For the complete workshop experience with explanations:
 
 ### Option 3: Standalone Code Examples
 
-For running the code examples directly:
+For running the code examples directly, follow the README in the `src` directory.
 
 #### Module 1: Basic AI Agent
-
-```bash
-just demo-1
-# OR manually:
-uv run src/module_one_01_ai_agent/app.py
-```
 
 This demonstrates a simple agent that:
 - Prompts for a research topic
@@ -116,28 +110,6 @@ This demonstrates a simple agent that:
 
 #### Module 2: Durable Execution with Temporal
 
-**Terminal 1** - Start Temporal server:
-```bash
-just temporal
-# OR manually:
-temporal server start-dev --ui-port 8080
-```
-
-**Terminal 2** - Start the worker:
-```bash
-just demo-2-worker
-# OR manually:
-uv run src/module_one_02_adding_durability/worker.py
-```
-
-**Terminal 3** - Execute the workflow:
-```bash
-just demo-2
-# OR manually:
-uv run src/module_one_02_adding_durability/starter.py
-```
-
-This demonstrates:
 - Fault-tolerant execution that survives process crashes
 - Automatic retries with exponential backoff
 - State persistence across worker restarts
@@ -145,26 +117,6 @@ This demonstrates:
 
 #### Module 3: Human-in-the-Loop
 
-**Terminal 1** - Temporal server (if not already running):
-```bash
-just temporal
-```
-
-**Terminal 2** - Start the worker:
-```bash
-just demo-3-worker
-# OR manually:
-uv run src/module_one_03_human_in_the_loop/worker.py
-```
-
-**Terminal 3** - Execute the workflow:
-```bash
-just demo-3
-# OR manually:
-uv run src/module_one_03_human_in_the_loop/starter.py
-```
-
-This demonstrates:
 - Pausing workflows for human decision-making
 - Using Temporal Signals for real-time communication
 - Allowing humans to approve or modify AI-generated content
@@ -202,10 +154,10 @@ By completing this workshop, you'll learn:
 - Identifying distributed systems challenges
 
 ### Part 2: Adding Durability
-- Introduction to Temporal workflows
-- Converting agents to durable workflows
+- Introduction to Temporal Workflows
+- Converting agents to durable Workflows
 - Implementing automatic retries
-- Monitoring workflow execution
+- Monitoring Workflow Execution
 
 ### Part 3: Human Integration
 - Temporal Signals for real-time communication

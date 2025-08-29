@@ -1,4 +1,4 @@
-## Demo Draft
+## Demo for Normal Execution
 
 ### Setup Instructions
 
@@ -25,34 +25,52 @@ Install the project dependencies using uv:
 uv sync
 ```
 
+#### Setup
+
+1. Run the following command to create a virtual environment: `python -m venv env`.
+2. Activate the environment using the following command:
+    - Linux/Mac: `source env/bin/activate`
+    - Windows: `env\Scripts\activate`
+Once the environment is active you should see (env) prepended to your bash prompt.
+
 ### Instructor Instructions 
 
-### Normal Execution Demo
-1. Demonstrate why Temporal is a great framework for LLMs first. Go in the `normal` directory and run the file with `python app.py`.
+#### Normal Execution Demo
+
+1. Demonstrate normal (non-durable) execution by routing to `mpdule_01_ai_agent` and running `python app.py`.
 2. Enter a research topic or question in the CLI. 
 3. When the countdown starts, kill the process with 'CTRL+C'.
-4. Now point out that when we restart the process now, we start from the beginning - the state is lost, the LLM does not remember the prompt that you prompted it with. Point out that imagine this is a more intensive process, if you got most of the way through, you have probably utilized a good amount of tokens. If you restart, you'll have to unnecessarily use more tokens.
+4. Ask the auidience
+    > What will happen if I run the execution again?
+        The answer should be "It will start over."
+        You can ask
+    > Who thinks it will resume where it left off?"
+        No one will probably think this, as this is not typical behavior for any programming language.
+4. Run the Normal Execution script again with `python app.py`. Confirm that the code did, in fact, start over. The state is lost, meaning the LLM no longer remembers your original prompt. Imagine this happening during a more intensive workflow — if you’ve already made significant progress, you’ve likely consumed a considerable number of tokens. Restarting the process would require you to repeat steps and spend additional tokens unnecessarily.
 
-### Durable Execution Demo
-1. We will now showcase how this is different with Temporal. Route to the `durable` directory. 
+#### Durable Execution Demo
+1. We will now showcase how this is different with Temporal. Route to the `module_02_adding_durability` directory. 
 2. Open three terminal windows.
 3. In one terminal window, start the Temporal server with `temporal server start-dev --ui-port 8080 --db-filename clusterdata.db`.
 4. In another terminal window, run the worker with `python worker.py`. You'll see some output indicating that the Worker has been started.
 5. In the third terminal window, execute your Workflow with `python starter.py`.
 6. You'll be prompted to enter a research topic or question in the CLI. 
-7. Once you do, in the terminal window with the Worker running, you'll see that the research has complete. Kill the process with 'CTRL+C'.
-8. Now point out that when we restart the process (by rerunning the Worker with `python worker.py`), you won't lose your state or progress, you'll continue from where you left off. You'll see that the PDF report generation has continued right where you left off. You can show the PDF that will appear in the `durable` directory.
-9. Also point out that you intentionally threw an error in the Activities to showcase retries. Show this both in the code and say that in our case, this is just an error we are intentionally throwing, but this could just as easily be an internal service that isn't responding or a network outage. 
-10. Showcase the retries in the Web UI too. Point out that in practice, your code will continue retrying until whatever issue the activity has encountered has resolved itself, whether that is the network coming back online or an internal service starting to respond again. By leveraging the durability of Temporal and out of the box retry capabilities, you have avoided writing retry and timeout logic yourself and saved your downstream services from being unnecessarily overwhelmed.
+7. Once you do, in the terminal window with the Worker running, you'll see: `Research complete! Time to generate PDF. Kill the Worker now to demonstrate durability.`. Kill the process with `CTRL+C`.
+8. Go on the Web UI and showcase that even though there is no Worker running, the Workflow can still persist despite restarts and infrastructure failures.
+9. Now point out that when we restart the process (by rerunning the Worker with `python worker.py`), you won't lose your state or progress, you'll continue from where you left off. Showcase two things:
+    - You'll see the Workflow Execution complete successfully in the Web UI. 
+    - You can also show the PDF that will appear in the `module_02_adding_durability` directory.  
 
 ### Human in the Loop Demo (Signals)
-1. We will now showcase how we can leverage human in the loop with Temporal Signals. Route to the `durable-with-signal` directory. 
+1. We will now showcase how we can leverage human-in-the-loop with Temporal Signals. Route to the `module_one_03_human_in_the_loop` directory. 
 2. In one terminal window, run your Worker with `python worker.py`.
 3. In another terminal window, execute your Workflow with `python starter.py`.
 4. You'll be prompted to enter a research topic or question in the CLI. 
-5. Once you do, in the terminal window with the Worker running, you'll see the research output. 
-6. Back in the terminal window when you started your Workflow Execution, you'll see that you are prompted to choose one of the two options:
+5. Once you do, you'll be prompted with the ability to Signal or Query the Workflow.
+6. Type 'query' and you'll see the output in the terminal window where you started your Workflow Execution. 
+7. Time to demonstrate Signals. Back in the terminal window when you started your Workflow Execution, you'll see that you are prompted to choose one of the two options:
     a. Approve of this research and if you would like it to create a PDF (type 'keep' to send a Signal to the Workflow to create the PDF).
     b. Modify the research by adding extra info to the prompt (type 'edit' to modify the prompt and send another Signal to the Workflow to prompt the LLM again).
-7. Demonstrate the modification by typing 'edit'.
-8. Enter additional instructions and see the new output in the terminal window with your Worker running. Now type 'keep' and show that the PDF has been created.
+8. Demonstrate the modification by typing `edit`.
+9. Enter additional instructions (e.g.: "turn this into a poem") and see the new output in the terminal window by typing `query` again.
+10. Finally, show that you can keep changing the execution path of your Workflow Execution by typing `keep`. Show that the PDF has appeared in your `module_one_03_human_in_the_loop` directory.

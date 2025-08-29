@@ -14,20 +14,23 @@ with workflow.unsafe.imports_passed_through():
         UserDecisionSignal,
     )
 
-@workflow.signal
-async def user_decision_signal(self, decision_data: UserDecisionSignal) -> None:
-    self._user_decision = decision_data
-
-@workflow.query
-def get_research_result(self) -> str | None:
-    return self._research_result
-
 @workflow.defn
 class GenerateReportWorkflow:
     def __init__(self) -> None:
         self._current_prompt: str = ""
-        self._user_decision: UserDecisionSignal = UserDecisionSignal(decision=UserDecision.WAIT) # UserDecision Signal starts with WAIT as the default state
+        self._user_decision: UserDecisionSignal = UserDecisionSignal(
+            decision=UserDecision.WAIT
+        )  # UserDecision Signal starts with WAIT as the default state
         self._research_result: str | None = None
+   
+    @workflow.signal
+    async def user_decision_signal(self, decision_data: UserDecisionSignal) -> None:
+        self._user_decision = decision_data
+
+
+    @workflow.query
+    def get_research_result(self) -> str | None:
+        return self._research_result
 
     @workflow.run
     async def run(self, input: GenerateReportInput) -> GenerateReportOutput:
@@ -48,14 +51,10 @@ class GenerateReportWorkflow:
                 start_to_close_timeout=timedelta(seconds=30),
             )
 
-            # Uncomment to add delay
-            # await workflow.sleep(timedelta(seconds=20))
-
             # Store the research result for queries
             self._research_result = research_facts["choices"][0]["message"]["content"]
 
             print("Research complete!")
-            print(f"Research content: {research_facts}")
 
             print("Waiting for user decision. Send signal with 'keep' to create PDF or 'edit' to modify research.")
             await workflow.wait_condition(lambda: self._user_decision.decision != UserDecision.WAIT)

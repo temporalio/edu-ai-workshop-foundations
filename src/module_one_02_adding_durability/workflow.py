@@ -29,10 +29,10 @@ class GenerateReportWorkflow:
             start_to_close_timeout=timedelta(seconds=30),
         )
 
-        print("Research complete!")
+        print("Research complete! Time to generate PDF. Kill the Worker now to demonstrate durability.")
 
-        # Uncomment to add delay
-        # await workflow.sleep(timedelta(seconds=20))
+        # Adding a delay for demo purposes so you have time to kill the Worker.
+        await workflow.sleep(timedelta(seconds=20))
 
         pdf_generation_input = PDFGenerationInput(content=research_facts["choices"][0]["message"]["content"])
 

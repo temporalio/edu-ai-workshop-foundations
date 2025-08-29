@@ -12,7 +12,6 @@ load_dotenv(override=True)
 LLM_MODEL = os.getenv("LLM_MODEL", "openai/gpt-4o")
 LLM_API_KEY = os.getenv("LLM_API_KEY", "YOU-DIDNT-PROVIDE-A-KEY")
 
-
 async def main() -> None:
     client = await Client.connect("localhost:7233")
 

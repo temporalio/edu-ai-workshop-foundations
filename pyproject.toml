@@ -8,6 +8,7 @@ dependencies = [
     "temporalio",
     "litellm",
     "reportlab",
+    "python-dotenv",
 ]
 authors = [{email = "mason.egger@temporal.io"}]
 

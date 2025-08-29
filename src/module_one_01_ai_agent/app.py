@@ -1,16 +1,14 @@
-## Part 1, does not have students create a JSON format
 import os
 import time
 
 from dotenv import load_dotenv
-from litellm import CustomStreamWrapper, completion  # type: ignore[attr-defined]
+from litellm import CustomStreamWrapper, completion
 from litellm.types.utils import ModelResponse
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.platypus import Flowable, Paragraph, SimpleDocTemplate, Spacer
 
 load_dotenv(override=True)
-
 
 # Get LLM_API_KEY environment variable
 LLM_MODEL = os.getenv("LLM_MODEL", "openai/gpt-4o")
