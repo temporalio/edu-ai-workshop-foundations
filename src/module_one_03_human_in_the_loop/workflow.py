@@ -14,12 +14,19 @@ with workflow.unsafe.imports_passed_through():
         UserDecisionSignal,
     )
 
+@workflow.signal
+async def user_decision_signal(self, decision_data: UserDecisionSignal) -> None:
+    self._user_decision = decision_data
+
+@workflow.query
+def get_research_result(self) -> str | None:
+    return self._research_result
 
 @workflow.defn
 class GenerateReportWorkflow:
     def __init__(self) -> None:
         self._current_prompt: str = ""
-        self._user_decision: UserDecisionSignal = UserDecisionSignal(decision=UserDecision.WAIT)
+        self._user_decision: UserDecisionSignal = UserDecisionSignal(decision=UserDecision.WAIT) # UserDecision Signal starts with WAIT as the default state
         self._research_result: str | None = None
 
     @workflow.run
@@ -84,12 +91,3 @@ class GenerateReportWorkflow:
         )
 
         return GenerateReportOutput(result=f"Successfully created research report PDF: {pdf_filename}")
-
-    @workflow.signal
-    async def user_decision_signal(self, decision_data: UserDecisionSignal) -> None:
-        self._user_decision = decision_data
-
-    @workflow.query
-    def get_research_result(self) -> str | None:
-        """Query to get the current research result"""
-        return self._research_result
