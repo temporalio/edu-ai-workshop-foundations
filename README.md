@@ -21,6 +21,7 @@ This workshop demonstrates three key concepts:
 │   ├── module_one_01_ai_agent/           # Simple AI agent
 │   ├── module_one_02_adding_durability/  # Temporal-based durable agent
 │   └── module_one_03_human_in_the_loop/  # Agent with human interaction
+|   └── module_one_04_agentic_loop/       # Agent that can make its own decisions
 └── justfile           # Development automation commands
 ```
 
@@ -47,16 +48,14 @@ uv python install 3.13
 uv python list
 ```
 
-### 2. Install Dependencies
+#### 2. Setup
 
-```bash
-# Clone the repository
-git clone https://github.com/temporalio/edu-ai-workshop.git
-cd edu-ai-workshop
-
-# Install all dependencies
-uv sync
-```
+1. Create a virtual environment: `python -m venv env`
+2. Activate the environment:
+   - Mac: `source env/bin/activate`
+   - Windows: `env\Scripts\activate`
+3. Install dependencies from `pyproject.toml` directory: `pip install -e ..`
+4. Once activated, you should see (env) prepended to your bash prompt
 
 ### 3. Configure API Keys
 
@@ -164,6 +163,12 @@ By completing this workshop, you'll learn:
 - Workflow pause/resume patterns
 - Building approval workflows
 - Production deployment considerations
+
+### Part 4: Agentic Loop
+- Introduction to Agentic loop
+- Introduction to Dynamic Activities
+- Understanding dynamic tools 
+- Determining when the goal is complete
 
 ## Technical Architecture
 
