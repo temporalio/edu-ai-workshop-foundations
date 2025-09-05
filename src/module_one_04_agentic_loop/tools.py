@@ -1,10 +1,12 @@
 from typing import Dict, Union
 import logging
+from temporalio import activity
 
 from models import ToolArgument, ToolDefinition
 
 logger = logging.getLogger(__name__)
 
+@activity.defn
 async def search_flights(params: Dict[str, Union[str, int]]) -> str:
     origin = params.get("origin", "Unknown")
     destination = params.get("destination", "Unknown")
@@ -18,6 +20,7 @@ async def search_flights(params: Dict[str, Union[str, int]]) -> str:
 - Flight DL789: Departs 6:30 PM, arrives 6:30 AM (+1 day), $420"""
 
 
+@activity.defn
 async def check_seat_availability(params: Dict[str, Union[str, int]]) -> str:
     flight_id = params.get("flight_id", "Unknown")
     
@@ -29,6 +32,7 @@ async def check_seat_availability(params: Dict[str, Union[str, int]]) -> str:
 - First: Sold out"""
 
 
+@activity.defn
 async def calculate_total_cost(params: Dict[str, Union[str, int]]) -> str:
     flight_id = params.get("flight_id", "UA456")
     passengers = params.get("passengers", 1)
@@ -47,6 +51,7 @@ async def calculate_total_cost(params: Dict[str, Union[str, int]]) -> str:
 - Grand total for {passengers} passenger(s): ${grand_total}"""
 
 
+@activity.defn
 async def book_flight(params: Dict[str, Union[str, int]]) -> str:
     flight_id = params.get("flight_id", "Unknown")
     seat_class = params.get("seat_class", "economy")
@@ -68,6 +73,7 @@ async def book_flight(params: Dict[str, Union[str, int]]) -> str:
     return result
 
 
+@activity.defn
 async def send_confirmation(params: Dict[str, Union[str, int]]) -> str:
     confirmation_number = params.get("confirmation_number", "CONF-UNKNOWN")
     

@@ -25,7 +25,7 @@ The project is already configured to use Python 3.13 via the `.python-version` f
 - Mac: `source env/bin/activate`
 - Windows: `env\Scripts\activate`
 
-3. Install dependencies from `pyproject.toml` directory: `pip install -e ..`
+3. Install dependencies from `pyproject.toml` directory: `pip install -e .`
 
 4. Once activated, you should see (env) prepended to your bash prompt
 

@@ -2,7 +2,6 @@ import json
 from temporalio import activity
 from litellm import completion
 from models import ToolDefinition, AgentGoal
-from tools import send_confirmation, book_flight, calculate_total_cost, search_flights, check_seat_availability
 
 @activity.defn
 async def agent_validate_prompt(
@@ -99,29 +98,3 @@ Return ONLY the JSON object."""
     except json.JSONDecodeError:
         activity.logger.warning(f"Failed to parse: {decision_text}")
         return {"tool": "DONE", "parameters": {}}
-
-# Tool activities - register each tool as a separate activity
-@activity.defn(name="search_flights")
-async def search_flights_activity(params: dict) -> str:
-    """Activity wrapper for search_flights tool."""
-    return await search_flights(params)
-
-@activity.defn(name="check_seat_availability")
-async def check_seat_availability_activity(params: dict) -> str:
-    """Activity wrapper for check_seat_availability tool."""
-    return await check_seat_availability(params)
-
-@activity.defn(name="calculate_total_cost")
-async def calculate_total_cost_activity(params: dict) -> str:
-    """Activity wrapper for calculate_total_cost tool."""
-    return await calculate_total_cost(params)
-
-@activity.defn(name="book_flight")
-async def book_flight_activity(params: dict) -> str:
-    """Activity wrapper for book_flight tool."""
-    return await book_flight(params)
-
-@activity.defn(name="send_confirmation") 
-async def send_confirmation_activity(params: dict) -> str:
-    """Activity wrapper for send_confirmation tool."""
-    return await send_confirmation(params)

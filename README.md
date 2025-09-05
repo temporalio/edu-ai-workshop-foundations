@@ -54,7 +54,7 @@ uv python list
 2. Activate the environment:
    - Mac: `source env/bin/activate`
    - Windows: `env\Scripts\activate`
-3. Install dependencies from `pyproject.toml` directory: `pip install -e ..`
+3. Install dependencies from `pyproject.toml` directory: `pip install -e .`
 4. Once activated, you should see (env) prepended to your bash prompt
 
 ### 3. Configure API Keys
