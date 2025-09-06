@@ -36,19 +36,23 @@ async def check_seat_availability(params: Dict[str, Union[str, int]]) -> str:
 async def calculate_total_cost(params: Dict[str, Union[str, int]]) -> str:
     flight_id = params.get("flight_id", "UA456")
     passengers = params.get("passengers", 1)
+    budget = params.get("budget", 500)
     
-    logger.info(f"Calculating cost for {flight_id}, {passengers} passenger(s)")
+    logger.info(f"Checking if {flight_id} for {passengers} passenger(s) is under budget of ${budget}")
     
     base_fare = 380
     taxes = 85
     total_per_person = base_fare + taxes
     grand_total = total_per_person * int(passengers)
     
-    return f"""Cost breakdown for {flight_id}:
-- Base fare: ${base_fare} per person
-- Taxes & fees: ${taxes} per person
-- Total per person: ${total_per_person}
-- Grand total for {passengers} passenger(s): ${grand_total}"""
+    is_under_budget = grand_total <= int(budget)
+    budget_difference = int(budget) - grand_total
+    
+    return f"""Flight {flight_id} budget check:
+- Total cost for {passengers} passenger(s): ${grand_total}
+- Budget limit: ${budget}
+- Within budget: {'Yes ✓' if is_under_budget else 'No ✗'}
+- {'Amount under budget: $' + str(budget_difference) if is_under_budget else 'Amount over budget: $' + str(abs(budget_difference))}"""
 
 
 @activity.defn
@@ -80,12 +84,7 @@ async def send_confirmation(params: Dict[str, Union[str, int]]) -> str:
     logger.info(f"Sending confirmation {confirmation_number}")
     
     result = f"Booking confirmation sent"
-    
-    # Add email if provided
-    email = params.get("email")
-    if email:
-        result = f"Confirmation email sent to {email}"
-    
+     
     # Add confirmation number if it's not the default
     if confirmation_number != "CONF-UNKNOWN":
         result += f" - Confirmation: {confirmation_number}"
@@ -129,17 +128,22 @@ check_seat_availability_tool = ToolDefinition(
 
 calculate_total_cost_tool = ToolDefinition(
     name="calculate_total_cost",
-    description="Calculate the total cost including taxes and fees for a flight",
+    description="Check if a flight is under a certain budget amount",
     arguments=[
         ToolArgument(
             name="flight_id",
             type="string",
-            description="Flight identifier to calculate cost for",
+            description="Flight identifier to check budget for",
         ),
         ToolArgument(
             name="passengers",
             type="integer",
             description="Number of passengers (default: 1)",
+        ),
+        ToolArgument(
+            name="budget",
+            type="integer",
+            description="Maximum budget amount in dollars (default: 500)",
         ),
     ],
 )
