@@ -1,7 +1,4 @@
-import asyncio
 from datetime import timedelta
-import logging
-
 from temporalio import workflow
 
 # sandboxed=False is a Notebook only requirement. You normally don't do this
