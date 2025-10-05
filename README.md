@@ -72,32 +72,14 @@ LLM_API_KEY = "your-actual-openai-api-key"
 LLM_MODEL = "openai/gpt-4o"
 ```
 
-## Running the Workshop
+## Running the Workshop: Codespaces
 
-### Option 1: Google Colab
+You can run this workshop on Codespaces as an Exercise Environment.
 
-You can use [Google Colab](https://colab.research.google.com/) and run the workshop from the files in this [Google Drive]().
+You can launch an exercise environment for this course using GitHub Codespaces by following [this](codespaces.md) walkthrough.
 
-1. Ensure you are signed in to a Google account.
-2. Open the notebook, go to **File** and click **Save a copy in Drive** to save the notebook to your Google Drive.
-3. Follow the notebook instructions step by step. Do this for every content and exercise.
-
-### Option 2: Interactive Notebooks
-
-For the complete workshop experience with explanations:
-
-1. Start Jupyter Lab:
-   ```bash
-   uv run --with jupyter jupyter lab
-   ```
-
-2. Navigate to `notebooks/content/` and open `01_An_AI_Agent.ipynb`
-
-3. Follow the notebook instructions step by step
-
-### Option 3: Standalone Code Examples
-
-For running the code examples directly, follow the README in the `src` directory.
+Before presenting, make sure you have cleared all outputs if you've experiemented with this workshop prior to presenting.
+[Clear all outputs](https://i.postimg.cc/RZvQmxLP/clear-all-outputs.png)
 
 #### Module 1: Basic AI Agent
 
@@ -170,27 +152,6 @@ By completing this workshop, you'll learn:
 - Understanding dynamic tools 
 - Determining when the goal is complete
 
-## Technical Architecture
-
-### Normal Execution (`module_one_01_ai_agent/`)
-- Single-threaded execution
-- No state persistence
-- Manual error handling
-- Process failure loses all progress
-
-### Durable Execution (`module_one_02_adding_durability/`)
-- **Workflows**: Orchestrate the overall process
-- **Activities**: Contain business logic (LLM calls, PDF generation)
-- **Workers**: Execute workflows and activities
-- **Automatic retries**: Configurable retry policies
-- **State persistence**: Survives worker restarts
-
-### Human-in-the-Loop (`module_one_03_human_in_the_loop/`)
-- **Signals**: Enable real-time workflow communication
-- **Workflow pause/resume**: Wait for human decisions
-- **Dynamic routing**: Based on human input
-- **Audit trail**: Complete history of decisions and actions
-
 ## Troubleshooting
 
 ### Common Issues
@@ -212,7 +173,3 @@ This workshop is designed for educational purposes. Feel free to:
 - Submit issues for bugs or unclear instructions
 - Propose improvements to the examples
 - Share your own AI agent implementations
-
-## License
-
-[Include appropriate license information]

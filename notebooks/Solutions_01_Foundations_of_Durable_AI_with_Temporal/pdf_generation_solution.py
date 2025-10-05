@@ -1,5 +1,3 @@
-# Expand for the solution
-
 # Make the API call
 print("Welcome to the Research Report Generator!")
 prompt = input("Enter your research topic or question: ")
