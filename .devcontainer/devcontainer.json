@@ -10,7 +10,7 @@
                 "ms-python.python"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "${containerEnv:HOME}/.local/bin/python"
+                "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
             }
         },
         "codespaces": {
@@ -29,8 +29,7 @@
             "label": "Temporal Server"
         }
     },
-    "onCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH=\"$HOME/.local/bin:$PATH\" && uv sync && uv pip install pip ipykernel jupyter && uv run python -m ipykernel install --user --name='python3' --display-name='Python 3 (ipykernel)'",
-    "postStartCommand": "temporal server start-dev --ui-port 8080",
+    "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH=\"$HOME/.local/bin:$PATH\" && uv sync && uv pip install pip ipykernel jupyter && uv run python -m ipykernel install --user --name='python3' --display-name='Python 3 (ipykernel)' && echo 'source ${containerWorkspaceFolder}/.venv/bin/activate' >> ~/.bashrc && nohup temporal server start-dev --ui-port 8080 > /tmp/temporal.log 2>&1 &",
     "remoteEnv": {
         "PROMPT_DIRTRIM": "2",
         "PATH": "${containerEnv:HOME}/.cargo/bin:${containerEnv:HOME}/.local/bin:${containerEnv:PATH}"
