@@ -48,17 +48,17 @@ class GenerateReportWorkflow:
             await workflow.wait_condition(lambda: self._user_decision.decision != UserDecision.WAIT)
 
             if self._user_decision.decision == UserDecision.KEEP:
-                print("User approved the research. Creating PDF...")
+                workflow.logger.info("User approved the research. Creating PDF...")
                 continue_agent_loop = False
             elif self._user_decision.decision == UserDecision.EDIT:
-                print("User requested research modification.")
+                workflow.logger.info("User requested research modification.")
                 if self._user_decision.additional_prompt != "":
                     self._current_prompt = (
                         f"{self._current_prompt}\n\nAdditional instructions: {self._user_decision.additional_prompt}"
                     )
-                    print(f"Regenerating research with updated prompt: {self._current_prompt}")
+                    workflow.logger.info(f"Regenerating research with updated prompt: {self._current_prompt}")
                 else:
-                    print("No additional instructions provided. Regenerating with original prompt.")
+                    workflow.logger.info("No additional instructions provided. Regenerating with original prompt.")
                 llm_call_input.prompt = self._current_prompt
 
                 # Set the decision back to WAIT for the next loop
