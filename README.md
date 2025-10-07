@@ -21,7 +21,7 @@ This workshop demonstrates three key concepts:
 ├── exercises/          # Hands-on exercises for the workshop
 │   ├── Practice        # Every chapter will have a Practice dir where students do their work in
 │   ├── Solution        # Every chapter will have a Solution dir where students can refer
-├── src/                # Directory for demos for the instructor
+├── demos/                # Directory for demos for the instructor
 │   ├── module_one_01_foundations_ai/     # Simple chain workflow
 │   ├── module_one_02_adding_durability/  # Temporal-based durable workflow
 │   └── module_one_03_human_in_the_loop/  # Adding human in the loop into our application
@@ -32,7 +32,7 @@ This workshop demonstrates three key concepts:
 ## Prerequisites
 
 - Python 3.13+
-- OpenAI API key (or other LLM provider API key)
+- [OpenAI API key](https://platform.openai.com/api-keys) (or other LLM provider API key)
 - Basic familiarity with Python and async programming
 
 ## Running the Workshop: Codespaces

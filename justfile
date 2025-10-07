@@ -27,9 +27,9 @@ format-check:
 
 # Run mypy type checking
 typecheck:
-    cd src/module_one_01_foundations_ai && uv run mypy app.py
-    cd src/module_one_02_adding_durability && uv run mypy --ignore-missing-imports activities.py worker.py workflow.py starter.py models.py
-    cd src/module_one_03_human_in_the_loop && uv run mypy --ignore-missing-imports activities.py worker.py workflow.py starter.py
+    cd demos/module_one_01_foundations_ai && uv run mypy app.py
+    cd demos/module_one_02_adding_durability && uv run mypy --ignore-missing-imports activities.py worker.py workflow.py starter.py models.py
+    cd demos/module_one_03_human_in_the_loop && uv run mypy --ignore-missing-imports activities.py worker.py workflow.py starter.py
 
 # Run all quality checks (lint, format check, typecheck)
 check: lint format-check typecheck
@@ -72,20 +72,20 @@ temporal:
 
 # Run the demo for 01-AI-Agent
 demo-1:
-    uv run src/module_one_01_foundations_ai/app.py
+    uv run demos/module_one_01_foundations_ai/app.py
 
 # Run the demo for 02-Add-Durability
 demo-2:
-    uv run src/module_one_02_adding_durability/starter.py
+    uv run demos/module_one_02_adding_durability/starter.py
 
 # Run the worker for 02-Add-Durability
 demo-2-worker:
-    uv run src/module_one_02_adding_durability/worker.py
+    uv run demos/module_one_02_adding_durability/worker.py
 
 # Run the demo for 03-Human-in-the-Loop
 demo-3:
-    uv run src/module_one_03_human_in_the_loop/starter.py
+    uv run demos/module_one_03_human_in_the_loop/starter.py
 
 # Run the worker for 03-Human-in-the-Loop
 demo-3-worker:
-    uv run src/module_one_03_human_in_the_loop/worker.py
+    uv run demos/module_one_03_human_in_the_loop/worker.py
