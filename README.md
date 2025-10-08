@@ -58,7 +58,7 @@ By completing this workshop, you'll learn:
 
 ### Part 1: Building Your First AI Chain Workflow
 - Creating basic LLM interactions
-- Generating PDF reports
+- Calling Actions from your LLM interactions
 - Identifying distributed systems challenges
 
 ### Part 2: Adding Durability
@@ -70,13 +70,10 @@ By completing this workshop, you'll learn:
 ### Part 3: Human Integration
 - Temporal Signals for real-time communication
 - Workflow pause/resume patterns
-- Building approval workflows
-- Production deployment considerations
+- Sending Queries to your Workflows
 
 ### Part 4: Agentic Loop
 - Introduction to Agentic loop
-- Introduction to Dynamic Activities
-- Understanding dynamic tools 
 - Determining when the goal is complete
 
 ## Contributing
