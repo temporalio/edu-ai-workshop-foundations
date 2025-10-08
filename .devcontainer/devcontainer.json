@@ -29,7 +29,7 @@
             "label": "Temporal Server"
         }
     },
-    "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && . $HOME/.local/bin/env && uv sync && uv pip install ipykernel jupyter && uv run python -m ipykernel install --user --name=python3 --display-name='Python 3 (ipykernel)'",
+    "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && . $HOME/.local/bin/env && uv sync && uv run python -m ipykernel install --user --name=python3 --display-name='Python 3 (ipykernel)'",
     "postStartCommand": "nohup temporal server start-dev --ui-port 8080 > /tmp/temporal.log 2>&1 &",
     "remoteEnv": {
         "PROMPT_DIRTRIM": "2",

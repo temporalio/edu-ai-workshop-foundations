@@ -9,8 +9,10 @@ dependencies = [
     "litellm",
     "reportlab",
     "python-dotenv",
+    "ipykernel",
+    "jupyter",
 ]
-authors = [{email = "mason.egger@temporal.io"}]
+authors = [{email = "angela.zhou@temporal.io"}]
 
 [dependency-groups]
 dev = [
