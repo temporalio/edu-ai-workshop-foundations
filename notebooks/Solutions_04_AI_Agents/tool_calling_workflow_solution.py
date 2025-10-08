@@ -49,10 +49,10 @@ class ToolCallingWorkflow:
                 })
                 
                 result = await workflow.execute_activity(
-                    openai_responses.create,
-                    openai_responses.OpenAIResponsesRequest(
+                    create,
+                    OpenAIResponsesRequest(
                         model="gpt-4o-mini",
-                        instructions="return the tool call result in a readable format"
+                        instructions="return the tool call result in a readable format",
                         input=input_list,
                         tools=[]
                     ),

@@ -12,11 +12,11 @@ async def main():
 
     query = sys.argv[1] if len(sys.argv) > 1 else "Hello, how are you?"
 
-    # Submit the Hello World workflow for execution
+    # Submit the Tool Calling workflow for execution
     result = await client.execute_workflow(
         ToolCallingWorkflow.run,
         query,
         id="my-workflow-id",
-        task_queue="tool-calling-python-task-queue", # TODO: Set the task queue of the client to match the task queue the worker is polling
+        task_queue="tool-calling-python-task-queue",
     )
     print(f"Result: {result}")
