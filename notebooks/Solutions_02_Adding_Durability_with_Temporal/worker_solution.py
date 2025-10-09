@@ -1,23 +1,20 @@
-import asyncio
-
+import concurrent.futures
 from temporalio.client import Client
+from temporalio.worker import Worker
 
-# Create client connected to server at the given address
-client = await Client.connect("localhost:7233", namespace="default")
+async def run_worker() -> None:
+    # Create client connected to server at the given address
+    client = await Client.connect("localhost:7233", namespace="default")
 
-print("Welcome to the Research Report Generator!")
-prompt = input("Enter your research topic or question: ").strip()
+    # Run the Worker
+    with concurrent.futures.ThreadPoolExecutor(max_workers=100) as activity_executor:
+        worker = Worker(
+            client,
+            task_queue="research", # the task queue the Worker is polling
+            workflows=[GenerateReportWorkflow], # register the Workflow
+            activities=[llm_call, create_pdf_activity], # register the Activities
+            activity_executor=activity_executor
+        )
 
-if not prompt:
-    prompt = "Give me 5 fun and fascinating facts about tardigrades. Make them interesting and educational!"
-    print(f"No prompt entered. Using default: {prompt}")
-
-# Asynchronous start of a Workflow
-handle = await client.start_workflow(
-    GenerateReportWorkflow.run,
-    GenerateReportInput(prompt=prompt),
-    id="generate-research-report-workflow", # user-defined Workflow identifier, which typically has some business meaning
-    task_queue="research", # the task-queue that your Worker is polling
-)
-
-print(f"Started workflow. Workflow ID: {handle.id}, RunID {handle.result_run_id}")
+        print(f"Starting the worker....")
+        await worker.run()
