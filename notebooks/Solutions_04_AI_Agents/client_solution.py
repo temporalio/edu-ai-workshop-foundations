@@ -15,7 +15,7 @@ async def main():
 
     # Submit the Tool Calling workflow for execution
     result = await client.execute_workflow(
-        ToolCallingWorkflow.run,
+        ToolCallingWorkflow,
         query,
         id=f"weather-alert-agent-{uuid.uuid4()}",
         task_queue="tool-calling-python-task-queue",
