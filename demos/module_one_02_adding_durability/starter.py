@@ -1,16 +1,8 @@
 import asyncio
-import os
-
-from dotenv import load_dotenv
+import uuid
 from models import GenerateReportInput
 from temporalio.client import Client
 from workflow import GenerateReportWorkflow
-
-load_dotenv(override=True)
-
-# Get LLM_API_KEY environment variable
-LLM_MODEL = os.getenv("LLM_MODEL", "openai/gpt-4o")
-LLM_API_KEY = os.getenv("LLM_API_KEY", "YOU-DIDNT-PROVIDE-A-KEY")
 
 async def main() -> None:
     client = await Client.connect("localhost:7233")
@@ -22,12 +14,12 @@ async def main() -> None:
         prompt = "Give me 5 fun and fascinating facts about tardigrades. Make them interesting and educational!"
         print(f"No prompt entered. Using default: {prompt}")
 
-    research_input = GenerateReportInput(prompt=prompt, llm_api_key=LLM_API_KEY)
+    research_input = GenerateReportInput(prompt=prompt)
 
     handle = await client.start_workflow(
         GenerateReportWorkflow,
         research_input,
-        id="generate-research-report-workflow",
+        id=f"generate-researdch-report-workflow-{uuid.uuid4()}",
         task_queue="durable",
     )
 

@@ -1,4 +1,6 @@
-from litellm import CustomStreamWrapper, completion  # type: ignore[attr-defined]
+import os
+from dotenv import load_dotenv
+from litellm import completion
 from litellm.types.utils import ModelResponse
 from models import LLMCallInput, PDFGenerationInput
 from reportlab.lib.pagesizes import letter
@@ -6,15 +8,19 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.platypus import Flowable, Paragraph, SimpleDocTemplate, Spacer
 from temporalio import activity
 
+load_dotenv(override=True)
+
+# Get LLM_API_KEY environment variable
+LLM_MODEL = os.getenv("LLM_MODEL", "openai/gpt-4o")
+LLM_API_KEY = os.getenv("LLM_API_KEY", "")
 
 @activity.defn
-def llm_call(input: LLMCallInput) -> ModelResponse | CustomStreamWrapper:  # type: ignore[no-any-unimported,misc]
+def llm_call(input: LLMCallInput) -> ModelResponse:
     return completion(
-        model=input.llm_model,
-        api_key=input.llm_api_key,
+        model=LLM_MODEL,
+        api_key=LLM_API_KEY,
         messages=[{"content": input.prompt, "role": "user"}],
     )
-
 
 @activity.defn
 def create_pdf(input: PDFGenerationInput) -> str:

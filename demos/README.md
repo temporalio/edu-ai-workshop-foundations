@@ -46,12 +46,12 @@ The project is already configured to use Python 3.13 via the `.python-version` f
 1. We will now showcase how this is different with Temporal. Route to the `module_02_adding_durability` directory. 
 2. Open three terminal windows.
 3. In one terminal window, start the Temporal server with `temporal server start-dev --ui-port 8080 --db-filename clusterdata.db`.
-4. In another terminal window, run the worker with `python worker.py`. You'll see some output indicating that the Worker has been started.
-5. In the third terminal window, execute your Workflow with `python starter.py`.
+4. In another terminal window, run the worker with `uv run worker.py`. You'll see some output indicating that the Worker has been started.
+5. In the third terminal window, execute your Workflow with `unv run starter.py`.
 6. You'll be prompted to enter a research topic or question in the CLI. 
 7. Once you do, in the terminal window with the Worker running, you'll see: `Research complete! Time to generate PDF. Kill the Worker now to demonstrate durability.`. Kill the process with `CTRL+C`.
 8. Go on the Web UI and showcase that even though there is no Worker running, the Workflow can still persist despite restarts and infrastructure failures.
-9. Now point out that when we restart the process (by rerunning the Worker with `python worker.py`), you won't lose your state or progress, you'll continue from where you left off. Showcase two things:
+9. Now point out that when we restart the process (by rerunning the Worker with `uv run worker.py`), you won't lose your state or progress, you'll continue from where you left off. Showcase two things:
     - You'll see the Workflow Execution complete successfully in the Web UI. 
     - You can also show the PDF that will appear in the `module_02_adding_durability` directory.  
 
