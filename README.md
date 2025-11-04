@@ -3,6 +3,15 @@
 This repository contains the self-serve version of this workshop, demonstrating how to build AI agents with Temporal Workflows. 
 The workshop teaches the progression from simple AI agents to production-ready, durable systems that handle failures gracefully and support human-in-the-loop interactions.
 
+## How to Use this Repository
+
+1. To present this workshop, present in Codespace so that students don't need to download any software on their machines. To do so, refer to [this document](./codespaces.md).
+2. This repository contains the Jupyter notebooks under [the notebooks directory](./notebooks). The notebooks are used as an educational tool for students to get practice with being hands-on with Temporal. 
+3. The slides that accompany the Jupyter notebooks are [here](https://docs.google.com/presentation/d/1N4YSml7yA3Gfq3svDFJpC6afQVn_m2txl4jwQ-lJqBQ/edit?usp=drive_link) and are given in the non-self-serve version (live version).
+4. The instructor goes through the slides. When there is a a little icon of a person at a keyboard on the bottom right of the slides, this lets students know that it's time to get hands-on and move to the notebooks.
+5. There will also be time for students to practice working independently with the material in the [exercises directory](./exercises/). The Jupyter notebooks will reference when it's time to do work on an exercise directory.
+6. For the live version of this workshop (using slides), refer to the `main` branch on this repository.
+
 ## Workshop Overview
 
 This workshop demonstrates three key concepts:
