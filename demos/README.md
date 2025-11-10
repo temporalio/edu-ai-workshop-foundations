@@ -77,24 +77,3 @@ LLM_MODEL=openai/gpt-4o
 8. Demonstrate the modification by typing `edit`.
 9. Enter additional instructions (e.g.: "turn this into a poem") and see the new output in the terminal window by typing `query` again (Remember, wait for the "Research complete!" output first in the window where the Worker is running).
 10. Finally, show that you can keep changing the execution path of your Workflow Execution by typing `keep`. Show that the PDF has appeared in your `module_one_03_human_in_the_loop` directory.
-
-### Agentic Loop Demo - Simple AI Booking Agent
-1. We will now showcase how an AI agent can dynamically choose its own tools with Temporal. Route to the `module_one_04_agentic_loop` directory with `cd module_one_04_agentic_loop`.
-2. Open three terminal windows.
-3. In one terminal window, start the Temporal server with `temporal server start-dev --ui-port 8080` (if not already running).
-4. In another terminal window, navigate to the `module_one_04_agentic_loop` directory and run the worker with `uv run worker.py`.
-5. In the third terminal window, execute your Workflow with `uv run starter.py`.
-6. Enter a booking goal when prompted (e.g., "Book a flight from RDU to London on November 18").
-7. Watch as the AI agent:
-    - Decides to search for flights first
-    - Extracts the origin, destination, and date from your goal
-    - Executes the search
-    - Decides to book the flight
-    - Completes the process
-8. The output shows:
-    - The final result
-    - Steps the AI agent took
-9. In the Web UI, point out the:
-    - Input, output
-    - The execution of each tool (search_flights, check_availability, book_flight)
-    - The difference in the tools selected if you do something like "Book a flight from RDU to NYC on Oct 18, check seat availability first and show me the total cost" vs. "Book a flight from RDU to NYC on Oct 18".
