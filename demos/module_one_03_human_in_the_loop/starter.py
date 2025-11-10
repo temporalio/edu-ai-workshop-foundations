@@ -4,22 +4,37 @@ from dotenv import load_dotenv
 from models import GenerateReportInput, UserDecision, UserDecisionSignal
 from temporalio.client import Client
 from workflow import GenerateReportWorkflow
+from temporalio.common import WorkflowIDConflictPolicy
 
 async def main() -> None:
     client = await Client.connect("localhost:7233")
 
     print("Welcome to the Research Report Generator!")
-    prompt = input("Enter your research topic or question: ").strip()
+    user_input = input(
+        "Enter your research topic or question, OR paste an existing workflow ID (UUID): "
+    ).strip()
 
-    if not prompt:
+    if not user_input:
         prompt = "Give me 5 fun and fascinating facts about tardigrades. Make them interesting and educational!"
-        print(f"No prompt entered. Using default: {prompt}")
+        workflow_id = f"generate-research-report-workflow-{uuid.uuid4()}"
+        print(f"No input provided. Using default prompt: {prompt}")
+    else:
+        try:
+            uuid.UUID(user_input)
+            workflow_id = "generate-research-report-workflow-" + user_input
+            prompt = "continue"
+            print(f"Using provided workflow ID: {workflow_id}. Prompt set to 'continue'.")
+        except ValueError:
+            prompt = user_input
+            workflow_id = f"generate-research-report-workflow-{uuid.uuid4()}"
+            print("Using provided prompt.")
 
     handle = await client.start_workflow(
         GenerateReportWorkflow,
         GenerateReportInput(prompt=prompt),
-        id=f"generate-researdch-report-workflow-{uuid.uuid4()}",
+        id=workflow_id,
         task_queue="durable",
+        id_conflict_policy=WorkflowIDConflictPolicy.USE_EXISTING
     )
 
     print(f"Workflow ID: {handle.id}, RunID {handle.result_run_id}")
