@@ -71,7 +71,7 @@ LLM_MODEL=openai/gpt-4o
 4. You'll be prompted to enter a research topic or question in the CLI. 
 5. Once you do, you'll be prompted with the ability to Signal or Query the Workflow.
 6. Type `query` and you'll see the output in the terminal window where you started your Workflow Execution. 
-7. Time to demonstrate Signals. Back in the terminal window when you started your Workflow Execution, you'll see that you are prompted to choose one of the two options:
+7. Time to demonstrate Signals. Back in the terminal window when you started your Workflow Execution, you'll see that you are prompted to choose one of the two Signals:
     a. Approve of this research and if you would like it to create a PDF (type `keep` to send a Signal to the Workflow to create the PDF).
     b. Modify the research by adding extra info to the prompt (type `edit` to modify the prompt and send another Signal to the Workflow to prompt the LLM again).
 8. Demonstrate the modification by typing `edit`.
