@@ -60,7 +60,7 @@ async def send_user_decision_signal(client: Client, workflow_id: str) -> None:
         print("3. Type 'edit' to modify the research")
         print("=" * 50)
 
-        decision = input("Your decision (keep/edit/query): ").strip().lower()
+        decision = input("Your decision (query/keep/edit): ").strip().lower()
 
         if decision in {"query", "1"}:
             await query_research_result(client, workflow_id)

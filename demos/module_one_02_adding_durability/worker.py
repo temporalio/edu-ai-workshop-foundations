@@ -1,6 +1,7 @@
 import asyncio
 import concurrent.futures
 import logging
+import warnings
 
 from activities import create_pdf, llm_call
 from temporalio.client import Client
@@ -10,7 +11,15 @@ from workflow import GenerateReportWorkflow
 
 async def main() -> None:
     logging.basicConfig(level=logging.INFO)
+
+    # Reduce noise from various libraries
     logging.getLogger("LiteLLM").setLevel(logging.WARNING)
+    logging.getLogger("temporalio").setLevel(logging.WARNING)
+    logging.getLogger("openai").setLevel(logging.WARNING)
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+
+    # Suppress Pydantic converter warning
+    warnings.filterwarnings("ignore", category=UserWarning, module="temporalio.converter")
 
     client = await Client.connect("localhost:7233", namespace="default")
 
