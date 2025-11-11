@@ -10,7 +10,7 @@ a. On the top left of the screen click the `+ Code` button:
 
 ![Add a Codeblock](https://i.postimg.cc/Jh7ZDGCz/add-codeblock.png)
 
-b. The codeblock to kill and restart the worker should contain:
+b. The codeblock to kill and restart the worker should contain something similar to:
 
 ```python
 import asyncio
@@ -41,7 +41,7 @@ print(f"Worker cancelled: {worker.cancelled()}")
 
 ### 3. Handling Workflow Task Errors
 
-If there's an issue like a typo in your workflow code, it will cause a workflow task error. When this happens, the notebook block will run forever because it's blocking on the stalled workflow.
+If there's an issue like a typo in your workflow code, it will cause a Workflow Task error. When this happens, the notebook block will run forever because it's blocking on the stalled workflow.
 
 **Solution:**
 - Click the **'Interrupt'** button in Jupyter notebook:
