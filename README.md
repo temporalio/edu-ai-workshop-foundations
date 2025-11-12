@@ -1,22 +1,22 @@
 # Foundations of Durable AI with Temporal
 
 This repository contains a hands-on workshop demonstrating how to build AI agents with Temporal Workflows. 
-The workshop teaches the progression from simple AI agents to production-ready, durable systems that handle failures gracefully and support human-in-the-loop interactions.
+The workshop teaches the progression from fixed flow AI applications to production-ready, durable systems that handle failures gracefully and support human-in-the-loop interactions.
 
 ## How to Use this Repository
 
-1. To present this workshop, present in Codespace so that students don't need to download any software on their machines. To do so, refer to [this document](./codespaces.md).
-2. This repository contains the Jupyter notebooks under [the notebooks directory](./notebooks). The notebooks are used as an educational tool for students to get practice with being hands-on with Temporal. 
+1. To try this workshop, use in Codespace so that you don't need to download any software on their machines. To do so, refer to [this document](./codespaces.md).
+2. This repository contains the Jupyter notebooks under [the notebooks directory](./notebooks). The notebooks are used as an educational tool for to get practice with being hands-on with Temporal. 
 3. The slides that accompany the Jupyter notebooks are [here](https://docs.google.com/presentation/d/1N4YSml7yA3Gfq3svDFJpC6afQVn_m2txl4jwQ-lJqBQ/edit?usp=drive_link).
-4. The instructor goes through the slides. When there is a a little icon of a person at a keyboard on the bottom right of the slides, this lets students know that it's time to get hands-on and move to the notebooks.
-5. There will also be time for students to practice working independently with the material in the [exercises directory](./exercises/). The Jupyter notebooks will reference when it's time to do work on an exercise directory.
+4. When there is a a little icon of a person at a keyboard on the bottom right of the slides, this lets you know that it's time to get hands-on and move to the notebooks.
+5. There will also be time for you to practice working independently with the material in the [exercises directory](./exercises/). The Jupyter notebooks will reference when it's time to do work on an exercise directory.
 6. For the self-serve version of this workshop (no need for slides), refer to the `self-serve-version` branch on this repository.
 
 ## Workshop Overview
 
-This workshop demonstrates three key concepts:
+This workshop demonstrates four key concepts:
 
-1. **Traditional AI Agent** - A simple research agent that calls an LLM and generates a PDF report
+1. **Fixed flow AI application** - A simple research agent that calls an LLM and generates a PDF report
 2. **Durable Execution** - The same agent built with Temporal workflows for fault tolerance and automatic retries
 3. **Human-in-the-Loop** - Adding Temporal Signals to enable human decision-making within AI workflows
 4. **AI Agents** - An introduction into the Agentic Loop
@@ -40,7 +40,6 @@ This workshop demonstrates three key concepts:
 
 ## Prerequisites
 
-- Python 3.13+
 - [OpenAI API key](https://platform.openai.com/api-keys)
 
 ## Running the Workshop: Codespaces
@@ -48,9 +47,6 @@ This workshop demonstrates three key concepts:
 You can run this workshop on Codespaces as an Exercise Environment.
 
 You can launch an exercise environment for this course using GitHub Codespaces by following [this](codespaces.md) walkthrough.
-
-Before presenting, make sure you have cleared all outputs if you've experiemented with this workshop prior to presenting.
-![Clear all outputs](https://i.postimg.cc/RZvQmxLP/clear-all-outputs.png)
 
 ## Key Learning Outcomes
 
