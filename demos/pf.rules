@@ -1,0 +1,21 @@
+# Sample firewall rules to make certain endpoints inaccessible
+#=============================================
+# OpenAI - the ip addresses for this URL are very stable so uncommenting
+# the following will likely work well for you
+block out quick to api.openai.com
+#=============================================
+# National Weather Service (NWS) - on the other hand, the ip addresses for the NWS
+# changes very frequently so the following block statement with the URL probably
+# won't work well for you. So here are a bunch of IP addresses that the URL sometimes
+# resolves to
+# block out quick to api.weather.gov
+# block out quick to 23.212.62.213
+# block out quick to 23.212.62.199
+# block out quick to 23.223.247.97
+# block out quick to 23.223.247.64
+# block out quick to 23.199.232.133
+# block out quick to 23.199.232.135
+# block out quick to 23.32.152.112
+# block out quick to 23.32.152.100
+# block out quick to sancert.weather.gov.edgekey.net
+# block out quick to e353369.dscg.akamaiedge.net
