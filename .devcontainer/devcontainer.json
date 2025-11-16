@@ -6,6 +6,7 @@
     "customizations": {
         "vscode": {
             "extensions": [
+                "mathematic.vscode-pdf",
                 "ms-toolsai.jupyter@2024.10.0",
                 "ms-python.python"
             ],
