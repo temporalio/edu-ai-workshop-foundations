@@ -7,7 +7,7 @@ The workshop teaches the progression from fixed flow AI applications to producti
 
 1. To try this workshop, use in Codespace so that you don't need to download any software on their machines. To do so, refer to [this document](./codespaces.md).
 2. This repository contains the Jupyter notebooks under [the notebooks directory](./notebooks). The notebooks are used as an educational tool for to get practice with being hands-on with Temporal. 
-3. The slides that accompany the Jupyter notebooks are [here](https://docs.google.com/presentation/d/1N4YSml7yA3Gfq3svDFJpC6afQVn_m2txl4jwQ-lJqBQ/edit?usp=drive_link).
+3. The slides that accompany the Jupyter notebooks are [here](/assets/slides).
 4. When there is a a little icon of a person at a keyboard on the bottom right of the slides, this lets you know that it's time to get hands-on and move to the notebooks.
     - If you start running out of time, in the `solution` directories, there are `solution` files (e.g. `notebooks/Solutions_03_Human_in_the_Loop/03_Human_in_the_Loop_Solution.ipynb`) with filled out versions of the notebooks
 5. There will also be time for you to practice working independently with the material in the [exercises directory](./exercises/). The Jupyter notebooks will reference when it's time to do work on an exercise directory.
