@@ -70,7 +70,7 @@ async def send_user_decision_signal(client: Client, workflow_id: str) -> None:
     while True:
         print("\n" + "=" * 50)
         print("Research is in progress! When it's complete you can choose one of the following options:")
-        print("1. Type 'query' to query for research result. If querying, wait for `Reserch Complete` to appear in terminal window with Worker running first.")
+        print("1. Type 'query' to query for research result. If querying, wait for `Research Complete` to appear in terminal window with Worker running first.")
         print("2. Type 'keep' to approve the research and create PDF")
         print("3. Type 'edit' to modify the research")
         print("=" * 50)
