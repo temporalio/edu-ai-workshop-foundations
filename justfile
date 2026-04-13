@@ -89,3 +89,37 @@ demo-3:
 # Run the worker for 03-Human-in-the-Loop
 demo-3-worker:
     uv run demos/module_one_03_human_in_the_loop/worker.py
+
+# File-Based Exercise Commands
+
+# Exercise 1: Foundations (single script, no Temporal)
+exercise-1:
+    cd exercises/01_Foundations_of_Durable_AI_with_Temporal/code/solution && uv run app.py
+
+# Exercise 2: Adding Durability
+exercise-2-worker:
+    cd exercises/02_Adding_Durability_with_Temporal/code/solution && uv run worker.py
+
+exercise-2:
+    cd exercises/02_Adding_Durability_with_Temporal/code/solution && uv run starter.py
+
+# Exercise 3: Human in the Loop
+exercise-3-worker:
+    cd exercises/03_Human_in_the_Loop/code/solution && uv run worker.py
+
+exercise-3:
+    cd exercises/03_Human_in_the_Loop/code/solution && uv run starter.py
+
+# Exercise 4: AI Agents - Tool Calling
+exercise-4-tc-worker:
+    cd exercises/04_AI_Agents/code/solution && uv run worker.py
+
+exercise-4-tc:
+    cd exercises/04_AI_Agents/code/solution && uv run starter.py
+
+# Exercise 4: AI Agents - Agent Loop
+exercise-4-agent-worker:
+    cd exercises/04_AI_Agents/code/solution && uv run worker.py --agent
+
+exercise-4-agent:
+    cd exercises/04_AI_Agents/code/solution && uv run starter.py --agent

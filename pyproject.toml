@@ -11,6 +11,10 @@ dependencies = [
     "python-dotenv",
     "ipykernel",
     "jupyter",
+    "openai",
+    "httpx",
+    "pydantic",
+    "requests",
 ]
 authors = [{email = "angela.zhou@temporal.io"}]
 
@@ -60,6 +64,18 @@ indent-style = "space"
 line-ending = "auto"
 
 [tool.ruff.lint.per-file-ignores]
+"exercises/**/code/practice/**" = [
+    "F401",   # imported but unused (imports for students to wire up)
+    "F541",   # f-string without placeholders (TODO placeholders)
+    "F841",   # local variable assigned but never used (TODO placeholders)
+    "ARG",    # unused arguments
+    "B018",   # useless expression (placeholder strings)
+    "RET",    # return value issues from incomplete code
+    "PIE",    # unnecessary pass (placeholder bodies)
+    "SIM",    # simplify suggestions on incomplete code
+    "UP",     # pyupgrade suggestions
+    "E",      # style issues in incomplete code
+]
 "notebooks/**/*.ipynb" = [
     "PTH",    # flake8-use-pathlib (style warnings for notebooks)
     "RET",    # flake8-return (style warnings for notebooks)
@@ -116,6 +132,8 @@ module = [
     "reportlab.*",
     "config",
     "dotenv",
+    "httpx",
+    "httpx.*",
 ]
 ignore_missing_imports = true
 
