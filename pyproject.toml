@@ -21,7 +21,7 @@ authors = [{email = "angela.zhou@temporal.io"}]
 [dependency-groups]
 dev = [
     "mypy>=1.17.1",
-    "pytest>=8.4.1",
+    "pytest>=9.0.3",
     "ruff>=0.12.10",
     "types-reportlab>=4.4.1.20250822",
 ]
